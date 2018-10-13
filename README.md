@@ -5,14 +5,14 @@
   2. [Variabili](#variabili)
   3. [Funzioni](#funzioni)
   4. [Oggetti e strutture dati](#oggetti-e-strutture-dati)
-  5. [Classi](#Classi)
+  5. [Classi](#classi)
   6. [SOLID](#solid)
   7. [Test](#Test)
-  8. [Concurrency](#concurrency)
-  9. [Error Handling](#error-handling)
-  10. [Formatting](#formatting)
-  11. [Comments](#comments)
-  12. [Translation](#translation)
+  8. [Consequenzialità](#consequenzialità)
+  9. [Gestione degli errori](#gestione-degli-errori)
+  10. [Formattazione](#formattazione)
+  11. [Commenti](#commenti)
+  12. [Traduzioni](#traduzioni)
 
 ## Introduzione
 ![Immagine umoristica che rappresenta quanto sia possibile stimare la qualità di un software attraverso il numero di parolacce espresse durante la lettura del codice](http://www.osnews.com/images/comics/wtfm.jpg)
@@ -1894,7 +1894,7 @@ review.perfReview();
 
 **[⬆ torna su](#lista-dei-contenuti)**
 
-## **Commento**
+## **Commenti**
 ### Commenta solo il codice che ha un alto livello di complessità
 Commentare è una scusa, non un requisito. Un buon codice *spesso* si spiega da solo.
 **Da evitare**
