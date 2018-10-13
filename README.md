@@ -1,20 +1,68 @@
 # clean-code-javascript
 
 ## Lista dei contenuti
-  1. [Introduzione](#introduzione)
-  2. [Variabili](#variabili)
-  3. [Funzioni](#funzioni)
-  4. [Oggetti e strutture dati](#oggetti-e-strutture-dati)
-  5. [Classi](#classi)
-  6. [SOLID](#solid)
-  7. [Test](#Test)
-  8. [Consequenzialità](#consequenzialità)
-  9. [Gestione degli errori](#gestione-degli-errori)
-  10. [Formattazione](#formattazione)
-  11. [Commenti](#commenti)
-  12. [Traduzioni](#traduzioni)
+  - [**Lista dei contenuti**](#lista-dei-contenuti)
+  - [**Introduzione**](#introduzione)
+  - [**Variabili**](#variabili)
+      - [Utilizza nomi di variabili comprensibili e pronunciabili](#utilizza-nomi-di-variabili-comprensibili-e-pronunciabili)
+      - [Usa la stessa semantica per lo stesso tipo di variabili](#usa-la-stessa-semantica-per-lo-stesso-tipo-di-variabili)
+      - [Utilizza nomi che possano essere cercati](#utilizza-nomi-che-possano-essere-cercati)
+      - [Utilizza nomi di variabili esplicartivi](#utilizza-nomi-di-variabili-esplicartivi)
+      - [Evita mappe mentali](#evita-mappe-mentali)
+      - [Non contestualizzare inutilmente](#non-contestualizzare-inutilmente)
+      - [Utilizza i valori di default (predefiniti), anzichè usare condizioni o valutazioni minime](#utilizza-i-valori-di-default-predefiniti-anzichè-usare-condizioni-o-valutazioni-minime)
+  - [**Funzioni**](#funzioni)
+      - [Argomenti di una funzione (idealmente 2 o anche meno)](#argomenti-di-una-funzione-idealmente-2-o-anche-meno)
+      - [Un metodo dovrebbe fare una sola cosa](#un-metodo-dovrebbe-fare-una-sola-cosa)
+      - [I nomi delle funzioni dovrebbero farti capire cosa fanno](#i-nomi-delle-funzioni-dovrebbero-farti-capire-cosa-fanno)
+      - [Le funzioni dovrebbero avere un solo livello di astrazione](#le-funzioni-dovrebbero-avere-un-solo-livello-di-astrazione)
+      - [Rimuovi il codice duplicato](#rimuovi-il-codice-duplicato)
+      - [Estendi un oggetto con Object.assign](#estendi-un-oggetto-con-objectassign)
+      - [Non usare valori flag (true/false) come parametri di una funzione](#non-usare-valori-flag-truefalse-come-parametri-di-una-funzione)
+      - [Evitare effetti inattesi (parte 1)](#evitare-effetti-inattesi-parte-1)
+      - [Evitare effetti inattesi (parte 2)](#evitare-effetti-inattesi-parte-2)
+      - [Non aggiungere funzioni globali](#non-aggiungere-funzioni-globali)
+      - [Preferisci la programmazione funzionale a quella imperativa](#preferisci-la-programmazione-funzionale-a-quella-imperativa)
+      - [Incapsula le condizioni](#incapsula-le-condizioni)
+      - [Evita di verificare condizioni in negativo](#evita-di-verificare-condizioni-in-negativo)
+      - [Evita le condizioni](#evita-le-condizioni)
+      - [Evita la validazione dei tipi (parte 1)](#evita-la-validazione-dei-tipi-parte-1)
+      - [Evita la validazione dei tipi (part 2)](#evita-la-validazione-dei-tipi-part-2)
+      - [Non ottimizzare eccessivamente](#non-ottimizzare-eccessivamente)
+      - [Rimuovi il codice inutilizzato](#rimuovi-il-codice-inutilizzato)
+  - [**Oggetti e strutture dati**](#oggetti-e-strutture-dati)
+      - [Utilizza getter e setter](#utilizza-getter-e-setter)
+      - [Imposta proprietà private in un oggetto](#imposta-proprietà-private-in-un-oggetto)
+  - [**Classi**](#classi)
+      - [Utilizza le classi ES2015/ES6 piuttosto che le funzioni di ES5](#utilizza-le-classi-es2015es6-piuttosto-che-le-funzioni-di-es5)
+      - [Concatena i metodi](#concatena-i-metodi)
+      - [Preferisci una struttura compositiva all'ereditarietà](#preferisci-una-struttura-compositiva-allereditarietà)
+  - [**SOLID**](#solid)
+      - [Single Responsibility Principle (SRP) (Principio di singola responsabilità)](#single-responsibility-principle-srp-principio-di-singola-responsabilità)
+      - [Open/Closed Principle (OCP) (Principio aperto/chiuso)](#openclosed-principle-ocp-principio-apertochiuso)
+      - [Liskov Substitution Principle (LSP) (Principio di sostituzione di Liskov)](#liskov-substitution-principle-lsp-principio-di-sostituzione-di-liskov)
+      - [Interface Segregation Principle (ISP) (Principio di segregazione delle interfacce)](#interface-segregation-principle-isp-principio-di-segregazione-delle-interfacce)
+      - [Dependency Inversion Principle (DIP) (Principio di inversione delle dipendenze)](#dependency-inversion-principle-dip-principio-di-inversione-delle-dipendenze)
+  - [**Test**](#test)
+      - [Un singolo comportamento per test](#un-singolo-comportamento-per-test)
+  - [**Consequenzialità**](#consequenzialità)
+      - [utilizza le Promise, non funzioni di callback](#utilizza-le-promise-non-funzioni-di-callback)
+      - [Async/Await sono addirittura più chiari delle Promise](#asyncawait-sono-addirittura-più-chiari-delle-promise)
+  - [**Gestione degli errori**](#gestione-degli-errori)
+      - [Non ingnorare gli errori intercettati](#non-ingnorare-gli-errori-intercettati)
+      - [Non ignorare le Promise quando vengono rigettate](#non-ignorare-le-promise-quando-vengono-rigettate)
+  - [**Formattazione**](#formattazione)
+      - [Utilizza le maiuscole in modo consistente](#utilizza-le-maiuscole-in-modo-consistente)
+      - [Richiami e dichiarazioni di funzioni dovrebbero essere vicini](#richiami-e-dichiarazioni-di-funzioni-dovrebbero-essere-vicini)
+  - [**Commenti**](#commenti)
+      - [Commenta solo il codice che ha un alto livello di complessità](#commenta-solo-il-codice-che-ha-un-alto-livello-di-complessità)
+      - [Non lasciare parti del tuo codice commentate all'interno dei sorgenti](#non-lasciare-parti-del-tuo-codice-commentate-allinterno-dei-sorgenti)
+      - [Non utilizzare i commenti come un diario](#non-utilizzare-i-commenti-come-un-diario)
+      - [Evita di specificare di cosa si tratta](#evita-di-specificare-di-cosa-si-tratta)
+  - [Traduzioni](#traduzioni)
 
 ## Introduzione
+
 ![Immagine umoristica che rappresenta quanto sia possibile stimare la qualità di un software attraverso il numero di parolacce espresse durante la lettura del codice](http://www.osnews.com/images/comics/wtfm.jpg)
 
 Principi di Ingegneria del Software, dal libro di Robert C. Martin
@@ -33,6 +81,7 @@ Ogni singola parte di codice parte come bozza, inizialmente, per per poi prender
 Solo alla fine perfezioneremo il nostro software, quando revisioneremo il codice con i nostri colleghi. Ma non abbatterti tu la prima volta che il tuo codice sarà revisionato e richiederà miglioramenti: *Abbatti il codice!*
 
 ## **Variabili**
+
 ### Utilizza nomi di variabili comprensibili e pronunciabili
 
 **Da evitare**
@@ -41,14 +90,17 @@ const yyyymmdstr = moment().format('YYYY/MM/DD');
 ```
 
 **Bene:**
+
 ```javascript
 const currentDate = moment().format('YYYY/MM/DD');
 ```
+
 **[⬆ torna su](#lista-dei-contenuti)**
 
 ### Usa la stessa semantica per lo stesso tipo di variabili
 
 **Da evitare**
+
 ```javascript
 getUserInfo();
 getClientData();
@@ -56,12 +108,15 @@ getCustomerRecord();
 ```
 
 **Bene:**
+
 ```javascript
 getUser();
 ```
+
 **[⬆ torna su](#lista-dei-contenuti)**
 
 ### Utilizza nomi che possano essere cercati
+
 Leggiamo molto più codice di quanto non ne scriveremo mai. È importante che il codice che noi scriviamo sia leggibile e ricercabile. Nominando variabili che non assumono uno specifico contesto all'interno del nostro software, possiamo irritare chi lo legge.
 Fai in modo che i nomi delle tue variabili siano ricercabili.
 Strumenti come [buddy.js](https://github.com/danielstjules/buddy.js) e
@@ -2013,7 +2068,7 @@ const actions = function() {
 ```
 **[⬆ torna su](#lista-dei-contenuti)**
 
-## Traduzioni
+## **Traduzioni**
 
 Questa guida è disponibile in altre lingue:
 
