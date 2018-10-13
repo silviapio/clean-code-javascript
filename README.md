@@ -4,7 +4,7 @@
   1. [Introduzione](#introduzione)
   2. [Variabili](#variabili)
   3. [Funzioni](#funzioni)
-  4. [Ogetti e strutture dati](#objects-and-data-structures)
+  4. [Oggetti e strutture dati](#oggetti-e-strutture-dati)
   5. [Classi](#Classi)
   6. [SOLID](#solid)
   7. [Test](#Test)
@@ -852,7 +852,7 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
 **[⬆ torna su](#lista-dei-contenuti)**
 
-## **Ogetti e strutture dati**
+## **Oggetti e strutture dati**
 ### Utilizza getter e setter
 Utilizzare getter e setter per acceedere ai dati di un oggetto può essere meglio che accedere direttamente alle sue proprietà. Ti starai sicuramente chiedendo il motivo.
 Eccoti qualche motivo per cui utilizzare getter e setter:
