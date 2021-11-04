@@ -69,16 +69,16 @@ Principi di Ingegneria del Software, dal libro di Robert C. Martin
 [*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
 adattati a JavaScript.
 
-Non si tratta di una guida stilistica, bensì una guida per cercare di produrre software
+Non si tratta di una guida stilistica, bensì di una guida per cercare di produrre software
 [leggibile, riutilizzabile e rifattorizzabile](https://github.com/ryanmcdermott/3rs-of-software-architecture) in JavaScript.
 
-Non tutti i principi di questa guida devono essere seguiti alla lettera, e solo alcuni sono universalmente condivisi. Sono linee guida e niente più, ma sono state tutte apprese in anni di esperienza collettiva dall'autore di *Clean code*.
+Non tutti i principi di questa guida devono essere seguiti alla lettera, e solo alcuni sono universalmente condivisi. Sono linee guida e niente più, ma sono linee guida che derivano da anni di esperienza collettiva degli autori di *Clean code*.
 
-Il nostro lavoro come software engeneer esiste da soli 50 anni e stiamo ancora cercando di apprendere molto. Quando l'architettura del software godrà della stessa anzianità dell'architettura in sè, probabilmente avremo regole più rigide da seguire. Per ora facciamo si che queste linee guida servano come termine di paragone per valutare la qualità del software che tu ed il tuo team producete.
+Il nostro lavoro come ingegneri del software esiste da soli 50 anni, e stiamo ancora imparando molto. Quando l'architettura del software godrà della stessa anzianità dell'architettura in sé, probabilmente avremo regole più rigide da seguire. Per ora, facciamo sì che queste linee guida servano come termine di paragone per valutare la qualità del software che producete tu ed il tuo team.
 
-Un ultima cosa: conoscere queste regole non farà di te immediatamente un developer migliore, e lavorare per tanti anni come tale non ti eviterà di commettere errori.
-Ogni singola parte di codice parte come bozza, inizialmente, per per poi prendere forma esattamente come una scultura di argilla.
-Solo alla fine perfezioneremo il nostro software, quando revisioneremo il codice con i nostri colleghi. Ma non abbatterti tu la prima volta che il tuo codice sarà revisionato e richiederà miglioramenti: *Abbatti il codice!*
+Un'ultima cosa: conoscere queste regole non ti trasformerà immediatamente in uno sviluppatore migliore, e lavorare tenendole presenti, anche per tanti anni, non ti impedirà di commettere errori.
+Ogni singola parte di codice nasce come una bozza, per poi prendere forma, proprio come una scultura di argilla.
+Solo alla fine perfezioneremo il nostro software, revisionando il codice con i nostri colleghi. Non abbatterti se il codice iniziale si deve migliorare. Piuttosto, vacci giù duro con il codice!
 
 ## **Variabili**
 
@@ -89,7 +89,7 @@ Solo alla fine perfezioneremo il nostro software, quando revisioneremo il codice
 const yyyymmdstr = moment().format('YYYY/MM/DD');
 ```
 
-**Bene:**
+**Corretto**
 
 ```javascript
 const currentDate = moment().format('YYYY/MM/DD');
@@ -107,7 +107,7 @@ getClientData();
 getCustomerRecord();
 ```
 
-**Bene:**
+**Corretto**
 
 ```javascript
 getUser();
@@ -115,12 +115,12 @@ getUser();
 
 **[⬆ torna su](#lista-dei-contenuti)**
 
-### Utilizza nomi che possano essere cercati
+### Utilizza nomi che siano facili da cercare
 
-Leggiamo molto più codice di quanto non ne scriveremo mai. È importante che il codice che noi scriviamo sia leggibile e ricercabile. Nominando variabili che non assumono uno specifico contesto all'interno del nostro software, possiamo irritare chi lo legge.
-Fai in modo che i nomi delle tue variabili siano ricercabili.
+Leggiamo molto più codice di quanto ne scriviamo. È importante che il codice che produciamo sia leggibile e consultabile. Se non assegnamo un nome a variabili importanti per capire il nostro software, infastidiamo chi lo legge.
+Fai in modo che i nomi delle tue variabili siano facili da cercare.
 Strumenti come [buddy.js](https://github.com/danielstjules/buddy.js) e
-[ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md) possono aiutarti ad identificare, per esempio, costanti non rinominate.
+[ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md) possono essere utili per identificare costanti a cui dovrebbe essere assegnato un nome.
 
 **Da evitare**
 ```javascript
@@ -129,17 +129,17 @@ setTimeout(blastOff, 86400000);
 
 ```
 
-**Bene:**
+**Corretto**
 ```javascript
-// Dichiarala come costante in maiuscolo.
-const MILLISECONDI_IN_UN_GIORNO = 86400000;
+// Dichiara la costante assegnandole un nome e usando lettere maiuscole. 
+const MILLISECONDI_IN_UN_GIORNO = 86400000; //86400000;
 
 setTimeout(blastOff, MILLISECONDI_IN_UN_GIORNO);
 
 ```
 **[⬆ torna su](#lista-dei-contenuti)**
 
-### Utilizza nomi di variabili esplicartivi
+### Utilizza nomi di variabili esplicativi
 **Da evitare**
 ```javascript
 const address = 'One Infinite Loop, Cupertino 95014';
@@ -147,7 +147,7 @@ const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 saveCityZipCode(address.match(cityZipCodeRegex)[1], address.match(cityZipCodeRegex)[2]);
 ```
 
-**Bene:**
+**Corretto**
 ```javascript
 const address = 'One Infinite Loop, Cupertino 95014';
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
@@ -156,8 +156,8 @@ saveCityZipCode(city, zipCode);
 ```
 **[⬆ torna su](#lista-dei-contenuti)**
 
-### Evita mappe mentali
-Essere espliciti è meglio che non esserlo.
+### Evita collegamenti mentali impliciti
+È meglio essere espliciti piuttosto che non esserlo.
 
 **Da evitare**
 ```javascript
@@ -168,12 +168,12 @@ locations.forEach((l) => {
   // ...
   // ...
   // ...
-  // A cosa fa riferimento esattamente `l`?
+  // Un momento, a cosa si riferiva `l`?
   dispatch(l);
 });
 ```
 
-**Bene:**
+**Corretto**
 ```javascript
 const locations = ['Austin', 'New York', 'San Francisco'];
 locations.forEach((location) => {
@@ -187,9 +187,9 @@ locations.forEach((location) => {
 ```
 **[⬆ torna su](#lista-dei-contenuti)**
 
-### Non contestualizzare inutilmente
+### Non aggiungere informazioni inutili
 
-Se il nome della tua classe/oggetto ti indica a cosa fa riferimento, non ripeterlo nei nomi delle sue proprietà o funzioni.
+Se il nome della tua classe o oggetto è già esplicativo, non ripeterlo nei nomi delle sue proprietà o funzioni.
 
 **Da evitare**
 ```javascript
@@ -204,7 +204,7 @@ function paintCar(car) {
 }
 ```
 
-**Bene:**
+**Corretto**
 ```javascript
 const Car = {
   make: 'Honda',
@@ -218,11 +218,10 @@ function paintCar(car) {
 ```
 **[⬆ torna su](#lista-dei-contenuti)**
 
-### Utilizza i valori di default (predefiniti), anzichè usare condizioni o valutazioni minime
+### Utilizza parametri predefiniti, anzichè usare condizionali o short-circuiting
 
-I valori di default, generalmente sono più chiari dei [valutazioni minime](https://it.wikipedia.org/wiki/Valutazione_a_corto_circuito). Tieni presente che se non utilizzerai questo approccio, la tua funzione restituirà solo `undefined` come valore di default.
-Tutti gli altri valori "falsy" come `''`, `""`, `false`, `null`, `0`, e
-`NaN`, non saranno sostituiti da un valore predefinito.
+I parametri predefiniti, generalmente, sono più chiari di condizionali o short-circuiting [valutazioni minime](https://it.wikipedia.org/wiki/Valutazione_a_corto_circuito). Ricorda che, se utilizzi parametri predefiniti, la tua funzione assegnerà il valore predefinito solamente ai parametri che non le verranno forniti (`undefined`).
+Gli altri valori assimilabili al booleano falso, ovvero `''`, `""`, `false`, `null`, `0`, e `NaN`, non saranno sostituiti dal valore predefinito specificato.
 
 **Da evitare**
 ```javascript
@@ -233,7 +232,7 @@ function createMicrobrewery(name) {
 
 ```
 
-**Bene:**
+**Corretto**
 ```javascript
 function createMicrobrewery(name = 'Hipster Brew Co.') {
   // ...
